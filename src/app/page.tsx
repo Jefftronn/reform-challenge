@@ -1,6 +1,5 @@
 import CTAButton from "../../components/CTAButton";
 import HeroHeader from "../../components/HeroHeader";
-import SlideScrollButtons from "../../components/SlideScrollButtons";
 import SlideScrollCards from "../../components/SlideScrollCards";
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
           </div>
           <div className="border-2 border-solid border-[#ccc] rounded-r-lg rounded-l-none p-8 gap-16 flex-col sm:flex-row">
             <SlideScrollCards />
-            <SlideScrollButtons />
           </div>
         </div>
       </section>

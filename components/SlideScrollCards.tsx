@@ -1,68 +1,63 @@
 'use client';
 
-import React from 'react';
-import { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
+import React, { useRef, useEffect, useState } from 'react';
+import gsap from 'gsap';
 import styles from './SlideScrollCards.module.css';
 
-const SlideScrollCards: React.FC = () => {
+const cardsData = Array.from({ length: 5 }, (_, i) => `Card ${i + 1}`);
+
+const SlideScrollCards = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<gsap.core.Tween | null>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    cardsRef.current.forEach((card, index) => {
+      if (!card) return;
 
-    const totalWidth = container.scrollWidth / 2;
+      const isActive = index === currentIndex;
+      const isAdjacent = Math.abs(index - currentIndex) === 1;
 
-    animationRef.current = gsap.to(container, {
-      x: -totalWidth,
-      duration: 20,
-      ease: 'none',
-      repeat: -1,
-      modifiers: {
-        x: gsap.utils.wrap(-totalWidth, 0),
-      }
+      gsap.to(card, {
+        scale: isActive ? 1 : isAdjacent ? 0.8 : 0.6,
+        opacity: isActive || isAdjacent ? 1 : 0,
+        xPercent: (index - currentIndex) * 100,
+        zIndex: isActive ? 2 : isAdjacent ? 1 : 0,
+        duration: 0.6,
+        ease: 'power2.inOut',
+        pointerEvents: isActive ? 'auto' : 'none',
+      });
     });
+  }, [currentIndex]);
 
-    return () => {
-      animationRef.current?.kill();
-    };
-  }, []);
+  const showNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % cardsData.length);
+  };
 
-const handlePrev = () => {
-  animationRef.current?.pause();
-  animationRef.current?.progress(
-    (animationRef.current.progress() + 0.05) % 1
-  );
-  animationRef.current?.play();
-};
-
-const handleNext = () => {
-  animationRef.current?.pause();
-  animationRef.current?.progress(
-    (animationRef.current.progress() - 0.05 + 1) % 1
-  );
-  animationRef.current?.play();
-};
-
-  const cards = ['Card 1', 'Card 2', 'Card 3', 'Card 4', 'Card 5'];
+  const showPrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
+  };
 
   return (
-    <div className={styles.wrapper}>
-      <button onClick={handlePrev} className={styles.navButton}>
+    <div className={styles.galleryWrapper}>
+      <button onClick={showPrev} className={styles.arrowButton}>
         ‹
       </button>
-      <div className={styles.viewport}>
-        <div className={styles.container} ref={containerRef}>
-          {[...cards, ...cards].map((text, index) => (
-            <div key={index} className={styles.card}>
-              {text}
-            </div>
-          ))}
-        </div>
+      <div className={styles.gallery} ref={containerRef}>
+        {cardsData.map((text, index) => (
+          <div
+            key={index}
+            ref={(el) => {
+              cardsRef.current[index] = el;
+            }}
+            className={styles.card}
+          >
+            {text}
+          </div>
+        ))}
       </div>
-      <button onClick={handleNext} className={styles.navButton}>
+      <button onClick={showNext} className={styles.arrowButton}>
         ›
       </button>
     </div>
