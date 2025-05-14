@@ -21,8 +21,8 @@ const SlideScrollCards: React.FC = () => {
       ease: 'none',
       repeat: -1,
       modifiers: {
-        x: gsap.utils.unitize((x) => parseFloat(x) % totalWidth),
-      },
+        x: gsap.utils.wrap(-totalWidth, 0),
+      }
     });
 
     return () => {
@@ -30,25 +30,21 @@ const SlideScrollCards: React.FC = () => {
     };
   }, []);
 
-  const handlePrev = () => {
-    animationRef.current?.pause();
-    gsap.to(containerRef.current, {
-      x: '+=220',
-      duration: 0.5,
-      ease: 'power2.out',
-      onComplete: () => animationRef.current?.play(),
-    });
-  };
+const handlePrev = () => {
+  animationRef.current?.pause();
+  animationRef.current?.progress(
+    (animationRef.current.progress() + 0.05) % 1
+  );
+  animationRef.current?.play();
+};
 
-  const handleNext = () => {
-    animationRef.current?.pause();
-    gsap.to(containerRef.current, {
-      x: '-=220',
-      duration: 0.5,
-      ease: 'power2.out',
-      onComplete: () => animationRef.current?.play(),
-    });
-  };
+const handleNext = () => {
+  animationRef.current?.pause();
+  animationRef.current?.progress(
+    (animationRef.current.progress() - 0.05 + 1) % 1
+  );
+  animationRef.current?.play();
+};
 
   const cards = ['Card 1', 'Card 2', 'Card 3', 'Card 4', 'Card 5'];
 
