@@ -65,7 +65,7 @@ body {
   color: #153E2A;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .cta-heading-text {
     font-size: 14px;
   }

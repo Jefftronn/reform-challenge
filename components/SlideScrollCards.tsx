@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import styles from './SlideScrollCards.module.css';
-import Image from "next/image";
+import Image from 'next/image';
 
 const cardsData = [
   '/cards/State=1.png',
@@ -15,8 +15,26 @@ const cardsData = [
 const SlideScrollCards = () => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalCards = cardsData.length;
+  const [layoutMode, setLayoutMode] = useState<'horizontal' | 'vertical'>('vertical');
   const isAnimatingRef = useRef(false);
+  const totalCards = cardsData.length;
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setLayoutMode('horizontal');
+      } else if (width < 1025) {
+        setLayoutMode('vertical');
+      } else {
+        setLayoutMode('horizontal');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -29,9 +47,11 @@ const SlideScrollCards = () => {
 
       const isActive = relIndex === 0;
       const isAdjacent = Math.abs(relIndex) === 1;
+      const offset = relIndex * 95;
 
       tl.to(card, {
-        xPercent: relIndex * 100,
+        xPercent: layoutMode === 'horizontal' ? offset : 0,
+        yPercent: layoutMode === 'vertical' ? offset : 0,
         scale: isActive ? 0.9 : isAdjacent ? 0.8 : 0.6,
         opacity: Math.abs(relIndex) <= 2 ? 1 : 0,
         visibility: Math.abs(relIndex) <= 2 ? 'visible' : 'hidden',
@@ -45,12 +65,12 @@ const SlideScrollCards = () => {
         tl.to(card, {
           scale: 1,
           duration: 0.9,
-          delay: .8,
+          delay: 0.8,
           ease: 'power1.out',
         }, 0.8);
       }
     });
-  }, [currentIndex, totalCards]);
+  }, [currentIndex, layoutMode, totalCards]);
 
   const animateAndSwitch = (nextIndex: number) => {
     if (isAnimatingRef.current) return;
@@ -71,7 +91,7 @@ const SlideScrollCards = () => {
       onComplete: () => {
         setCurrentIndex(nextIndex);
         isAnimatingRef.current = false;
-      }
+      },
     });
   };
 
@@ -105,11 +125,7 @@ const SlideScrollCards = () => {
       </div>
 
       <div className={styles.controls}>
-        <a
-          onClick={showPrev}
-          className="transition-colors flex items-center justify-center text-background gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 sm:w-auto "
-          rel="noopener noreferrer"
-        >
+        <a onClick={showPrev} rel="noopener noreferrer">
           <Image
             className="dark:invert"
             src="/Arrow=Left.svg"
@@ -118,11 +134,7 @@ const SlideScrollCards = () => {
             height={40}
           />
         </a>
-        <a
-          onClick={showNext}
-          className="transition-colors flex items-center justify-center text-background gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 sm:w-auto "
-          rel="noopener noreferrer"
-        >
+        <a onClick={showNext} rel="noopener noreferrer">
           <Image
             className="dark:invert"
             src="/Arrow=Right.svg"
