@@ -45,6 +45,7 @@ const SlideScrollCards = () => {
         tl.to(card, {
           scale: 1,
           duration: 0.9,
+          delay: .8,
           ease: 'power1.out',
         }, 0.8);
       }
@@ -65,6 +66,7 @@ const SlideScrollCards = () => {
     gsap.to(currentCard, {
       scale: 0.8,
       duration: 0.8,
+      delay: 0.4,
       ease: 'power1.in',
       onComplete: () => {
         setCurrentIndex(nextIndex);
@@ -83,7 +85,6 @@ const SlideScrollCards = () => {
 
   return (
     <div className={styles.galleryWrapper}>
-      <button onClick={showPrev} className={styles.arrowButton}>‹</button>
       <div className={styles.gallery}>
         {cardsData.map((src, index) => (
           <div
@@ -93,7 +94,6 @@ const SlideScrollCards = () => {
             }}
             className={styles.card}
           >
-            {/* <img src={src} alt={`Card ${index + 1}`} className={styles.cardImage} /> */}
             <Image
               className={styles.cardImage}
               src={src}
@@ -103,7 +103,35 @@ const SlideScrollCards = () => {
           </div>
         ))}
       </div>
-      <button onClick={showNext} className={styles.arrowButton}>›</button>
+
+      <div className={styles.controls}>
+        <a
+          onClick={showPrev}
+          className="transition-colors flex items-center justify-center text-background gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 sm:w-auto "
+          rel="noopener noreferrer"
+        >
+          <Image
+            className="dark:invert"
+            src="/Arrow=Left.svg"
+            alt="Arrow icon"
+            width={40}
+            height={40}
+          />
+        </a>
+        <a
+          onClick={showNext}
+          className="transition-colors flex items-center justify-center text-background gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 sm:w-auto "
+          rel="noopener noreferrer"
+        >
+          <Image
+            className="dark:invert"
+            src="/Arrow=Right.svg"
+            alt="Arrow icon"
+            width={40}
+            height={40}
+          />
+        </a>
+      </div>
     </div>
   );
 };

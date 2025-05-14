@@ -5,19 +5,42 @@
   overflow: hidden;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
   position: relative;
-  padding: 40px 0;
+  flex-direction: column;
 }
 
 .gallery {
   position: relative;
-  width: 600px;
-  height: 300px;
+  width: 500px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   perspective: 1000px;
+}
+
+@media (max-width: 1224px) {
+  .gallery {
+      width: 400px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .gallery {
+      width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+      width: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  .gallery {
+      width: 300px;
+  }
 }
 
 .card {
@@ -26,7 +49,6 @@
   height: 100%;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,10 +56,21 @@
   font-weight: bold;
   transition: box-shadow 0.3s ease;
   overflow: hidden;
+  z-index: 1;
 }
 
-.card:hover {
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+.cardImage {
+  object-fit: contain;
+  border-radius: 12px;
+  background-color: #FBFAF6;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 20px;
+  z-index: 1000;
 }
 
 .arrowButton {
@@ -47,15 +80,9 @@
   cursor: pointer;
   color: #444;
   padding: 10px 20px;
-  z-index: 10;
   transition: color 0.2s ease;
 }
 
 .arrowButton:hover {
   color: #000;
-}
-
-.cardImage {
-  object-fit: cover;
-  border-radius: 12px;
 }

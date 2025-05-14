@@ -8,15 +8,23 @@ const CTAButton = () => {
   const textButtonRef = useRef(null);
   const iconButtonRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    gsap.to(textButtonRef.current, { x: 68, duration: 0.5 });
-    gsap.to(iconButtonRef.current, { x: -226, duration: 0.5 });
-  };
+const handleMouseEnter = () => {
+  const isMobile = window.innerWidth < 640; // Tailwind's sm breakpoint is 640px
 
-  const handleMouseLeave = () => {
-    gsap.to(textButtonRef.current, { x: 0, duration: 0.5 });
-    gsap.to(iconButtonRef.current, { x: 0, duration: 0.5 });
-  };
+  gsap.to(textButtonRef.current, {
+    x: isMobile ? 40 : 60,
+    duration: 0.5,
+  });
+  gsap.to(iconButtonRef.current, {
+    x: isMobile ? -210 : -230,
+    duration: 0.5,
+  });
+};
+
+const handleMouseLeave = () => {
+  gsap.to(textButtonRef.current, { x: 0, duration: 0.5 });
+  gsap.to(iconButtonRef.current, { x: 0, duration: 0.5 });
+};
 
   return (
     <div
@@ -28,23 +36,21 @@ const CTAButton = () => {
         <a
           ref={textButtonRef}
           className="z-top cta-button rounded-full border border-solid transition-colors flex items-center justify-center text-background gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-          href=""
           rel="noopener noreferrer"
         >
           Get a Custom Quote Today
         </a>
         <a
           ref={iconButtonRef}
-          className="cta-button rounded-full border border-solid transition-colors flex items-center justify-center text-background gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-          href=""
+          className="transition-colors flex items-center justify-center text-background gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 sm:w-auto "
           rel="noopener noreferrer"
         >
           <Image
             className="dark:invert"
-            src="/Arrow.svg"
+            src="/Arrow=Right.svg"
             alt="Arrow icon"
-            width={14}
-            height={14}
+            width={42}
+            height={42}
           />
         </a>
       </div>

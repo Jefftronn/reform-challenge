@@ -10,13 +10,13 @@ export default function Home() {
       </section>
       <section className="mt-12 sm:mt-18 md:mt-24">
         <div className="flex flex-col-reverse lg:flex-row">
-          <div className="flex flex-col justify-between border-2 border-solid border-[#ccc] rounded-t-lg lg:rounded-l-lg lg:rounded-tr-none lg:rounded-r-none p-8 gap-8 w-full lg:w-1/2">
+          <div className="flex flex-col justify-between border-2 border-solid border-[#ccc] p-8 gap-8 w-full lg:w-1/2 min-w-[400px]">
             <h2 className="cta-heading-text">
               Join hundreds of businesses who trust us to offer health insurance that works the way it should: affordable coverage that puts employees and their doctors in the driving seat.
             </h2>
             <CTAButton />
           </div>
-          <div className="border-2 border-solid border-[#ccc] rounded-b-lg lg:rounded-r-lg lg:rounded-tl-none lg:rounded-l-none p-8 flex justify-center items-center w-full lg:w-1/2">
+          <div className="border-2 border-solid border-[#ccc] pt-4 pb-4 flex justify-center items-center w-full lg:w-1/2">
             <SlideScrollCards />
           </div>
         </div>
