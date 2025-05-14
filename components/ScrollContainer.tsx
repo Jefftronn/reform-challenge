@@ -28,7 +28,7 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ h1Ref }) => {
 
     const scrollTween = gsap.to(textEl, {
       x: `-=${totalWidth}`,
-      duration: 10,
+      duration: 30,
       ease: 'linear',
       repeat: -1,
     });
@@ -36,15 +36,15 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ h1Ref }) => {
     const fadeTween = gsap.to(container, {
       scale: 0,
       opacity: 0,
-      duration: 2,
-      delay: 2,
+      duration: 3,
+      delay: 3,
       ease: 'power2.inOut',
       onComplete: () => {
         gsap.set(container, { display: 'none' });
         gsap.to(h1El, {
           color: '#00B684',
           duration: 1,
-          ease: 'power2.inOut',
+          ease: 'power1.inOut',
         });
       },
     });
