@@ -4,12 +4,12 @@ import SlideScrollCards from "../../components/SlideScrollCards";
 
 export default function Home() {
   return (
-    <div className="w-full items-center justify-center p-8 pb-20 gap-16">
+    <div className="w-full items-center justify-center pb-20 gap-16 p-4 sm:p-4 md:p-8">
       <section>
         <HeroHeader ></HeroHeader>
       </section>
-      <section className="mt-26">
-        <div className="flex flex-col lg:flex-row">
+      <section className="mt-12 sm:mt-18 md:mt-24">
+        <div className="flex flex-col-reverse lg:flex-row">
           <div className="flex flex-col justify-between border-2 border-solid border-[#ccc] rounded-t-lg lg:rounded-l-lg lg:rounded-tr-none lg:rounded-r-none p-8 gap-8 w-full lg:w-1/2">
             <h2 className="cta-heading-text">
               Join hundreds of businesses who trust us to offer health insurance that works the way it should: affordable coverage that puts employees and their doctors in the driving seat.

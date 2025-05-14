@@ -26,6 +26,18 @@ body {
   overflow-x: hidden;
 }
 
+.main-header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .main-header {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
 .main-heading-1 {
   font-family: 'Soehne';
   font-style: normal;
@@ -36,7 +48,7 @@ body {
   color: #153E2A;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .main-heading-1 {
     font-size: 48px;
     line-height: 115%;
@@ -44,13 +56,19 @@ body {
 }
 
 .cta-heading-text {
-font-family: 'Soehne';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-line-height: 140%;
-letter-spacing: -0.03em;
-color: #153E2A;
+  font-family: 'Soehne';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: -0.03em;
+  color: #153E2A;
+}
+
+@media (max-width: 768px) {
+  .cta-heading-text {
+    font-size: 14px;
+  }
 }
 
 @font-face {
@@ -69,6 +87,16 @@ text-align: center;
 letter-spacing: 0.1em;
 text-transform: uppercase;
 color: #D87906;
+}
+
+.scrolling-text-container {
+  width: 600px;
+}
+
+@media (max-width: 1024px) {
+  .scrolling-text-container {
+    width: 300px;
+  }
 }
 
 .cta-button {
