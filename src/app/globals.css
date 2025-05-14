@@ -23,6 +23,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Soehne', sans-serif;
+  overflow-x: hidden;
 }
 
 .main-heading-1 {
@@ -33,6 +34,13 @@ body {
   line-height: 120%;
   letter-spacing: -0.03em;
   color: #153E2A;
+}
+
+@media (max-width: 1024px) {
+  .main-heading-1 {
+    font-size: 48px;
+    line-height: 115%;
+  }
 }
 
 .cta-heading-text {

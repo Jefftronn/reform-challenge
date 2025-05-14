@@ -33,6 +33,7 @@
   font-size: 24px;
   font-weight: bold;
   transition: box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -52,4 +53,9 @@
 
 .arrowButton:hover {
   color: #000;
+}
+
+.cardImage {
+  object-fit: cover;
+  border-radius: 12px;
 }

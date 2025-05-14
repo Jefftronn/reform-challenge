@@ -33,7 +33,7 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ h1Ref }) => {
       scale: 0,
       opacity: 0,
       duration: 2,
-      delay: 100,
+      delay: 2,
       ease: 'power2.inOut',
       onComplete: () => {
         gsap.set(container, { display: 'none' });
