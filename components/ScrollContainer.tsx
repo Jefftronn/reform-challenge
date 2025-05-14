@@ -1,13 +1,11 @@
 'use client'
 import React from 'react';
-// import Image from 'next/image';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 interface ScrollContainerProps {
   h1Ref: React.RefObject<HTMLHeadingElement | null>;
 }
-
 
 const ScrollContainer: React.FC<ScrollContainerProps> = ({ h1Ref }) => {
   const containerRef = useRef<HTMLSpanElement>(null);
@@ -20,21 +18,17 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ h1Ref }) => {
     const h1El = h1Ref.current;
     if (!container || !textEl || !h1El) return;
 
-    // Duplicate the text for seamless scrolling
     textEl.innerHTML = `${text} \u00A0 ${text}`;
 
-    // Calculate the width of the text
     const textWidth = textEl.offsetWidth / 2;
 
-    // Animate horizontal scrolling with a slower duration
     const scrollTween = gsap.to(textEl, {
       x: `-=${textWidth}`,
-      duration: 10, // Increased duration for slower scrolling
+      duration: 10,
       ease: 'linear',
       repeat: -1,
     });
 
-    // Shrink, fade out, and remove from layout after a delay
     const fadeTween = gsap.to(container, {
       scale: 0,
       opacity: 0,
