@@ -70,7 +70,7 @@ useEffect(() => {
       tl.to(card, {
         scale: 1,
         duration: 0.9,
-        delay: 0.8,
+        delay: .1,
         ease: 'power1.out',
       }, 0.8);
     }
