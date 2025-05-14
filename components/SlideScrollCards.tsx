@@ -36,41 +36,46 @@ const SlideScrollCards = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const tl = gsap.timeline();
+useEffect(() => {
+  const tl = gsap.timeline();
 
-    cardsRef.current.forEach((card, index) => {
-      if (!card) return;
+  cardsRef.current.forEach((card, index) => {
+    if (!card) return;
 
-      let relIndex = ((index - currentIndex + totalCards) % totalCards);
-      if (relIndex > totalCards / 2) relIndex -= totalCards;
+    let relIndex = ((index - currentIndex + totalCards) % totalCards);
+    if (relIndex > totalCards / 2) relIndex -= totalCards;
 
-      const isActive = relIndex === 0;
-      const isAdjacent = Math.abs(relIndex) === 1;
-      const offset = relIndex * 95;
+    const isActive = relIndex === 0;
+    const isAdjacent = Math.abs(relIndex) === 1;
+    const offset = relIndex * 95;
 
-      tl.to(card, {
-        xPercent: layoutMode === 'horizontal' ? offset : 0,
-        yPercent: layoutMode === 'vertical' ? offset : 0,
-        scale: isActive ? 0.9 : isAdjacent ? 0.8 : 0.6,
-        opacity: Math.abs(relIndex) <= 2 ? 1 : 0,
-        visibility: Math.abs(relIndex) <= 2 ? 'visible' : 'hidden',
-        zIndex: isActive ? 2 : isAdjacent ? 1 : 0,
-        duration: 1.6,
-        ease: 'power2.out',
-        pointerEvents: isActive ? 'auto' : 'none',
-      }, 0);
+    // Animate position, scale, and opacity
+    tl.to(card, {
+      xPercent: layoutMode === 'horizontal' ? offset : 0,
+      yPercent: layoutMode === 'vertical' ? offset : 0,
+      scale: isActive ? 0.9 : isAdjacent ? 0.8 : 0.6,
+      opacity: Math.abs(relIndex) <= 2 ? 1 : 0,
+      visibility: Math.abs(relIndex) <= 2 ? 'visible' : 'hidden',
+      duration: .6,
+      ease: 'power2.out',
+      pointerEvents: isActive ? 'auto' : 'none',
+    }, 0);
 
-      if (isActive) {
-        tl.to(card, {
-          scale: 1,
-          duration: 0.9,
-          delay: 0.8,
-          ease: 'power1.out',
-        }, 0.8);
-      }
+    // Then set z-index separately to fix stacking context issues
+    gsap.set(card, {
+      zIndex: isActive ? 3 : isAdjacent ? 2 : 1,
     });
-  }, [currentIndex, layoutMode, totalCards]);
+
+    if (isActive) {
+      tl.to(card, {
+        scale: 1,
+        duration: 0.9,
+        delay: 0.8,
+        ease: 'power1.out',
+      }, 0.8);
+    }
+  });
+}, [currentIndex, layoutMode, totalCards]);
 
   const animateAndSwitch = (nextIndex: number) => {
     if (isAnimatingRef.current) return;
