@@ -5,8 +5,8 @@ import { gsap } from 'gsap';
 import styles from './CTAButton.module.css'
 
 const CTAButton = () => {
-  const textButtonRef = useRef<HTMLDivElement | null>(null);
-  const iconButtonRef = useRef<HTMLDivElement | null>(null);
+  const textButtonRef = useRef<HTMLAnchorElement | null>(null);
+  const iconButtonRef = useRef<HTMLAnchorElement | null>(null);
 
   const handleMouseEnter = () => {
     const paths = iconButtonRef.current?.querySelectorAll('path');
@@ -23,11 +23,11 @@ const CTAButton = () => {
     gsap.to(textButtonRef.current, {
       color: "#00B684",
       borderColor: "#00B684",
-      x: iconWidth + gap,
+      x: (iconWidth ?? 0) + gap,
       duration: 0.5,
     });
     gsap.to(iconButtonRef.current, {
-      x: -(textButtonWidth.offsetWidth),
+      x: -(textButtonWidth?.offsetWidth ?? 0),
       duration: 0.5,
     });
 
