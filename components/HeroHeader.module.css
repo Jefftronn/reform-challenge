@@ -1,0 +1,46 @@
+.mainHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.mainHeadingH1 {
+  text-align: center;
+  line-height: 120%;
+  font-size: 3rem;
+  letter-spacing: -3pt;
+  font-size: 7rem;
+}
+
+@media (max-width: 1024px) {
+  .mainHeadingH1 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .mainHeadingH1 {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainHeadingH1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .mainHeadingH1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 350px) {
+  .mainHeadingH1 {
+    font-size: 13vw;
+  }
+}

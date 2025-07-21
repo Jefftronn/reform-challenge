@@ -3,16 +3,23 @@
 import React from 'react';
 import { useRef } from 'react';
 import ScrollContainer from './ScrollContainer';
+import styles from './HeroHeader.module.css';
 
 const HeroHeader = () => {
-    const h1Ref = useRef<HTMLHeadingElement>(null);
+const spanRef1 = useRef<HTMLSpanElement>(null);
+const spanRef2 = useRef<HTMLSpanElement>(null);
 
-  return (
-    <div className="flex items-center justify-center w-full main-header">
-      <h1 className="main-heading-1 text-center">Health insurance that <span ref={h1Ref}>doesn’t get in{' '}
-        <ScrollContainer h1Ref={h1Ref} />{' '}the way.</span></h1>
-    </div>
-  );
+return (
+  <div className={styles.mainHeader}>
+    <h1 className={styles.mainHeadingH1}>
+      Health insurance that{' '}
+      <span ref={spanRef1}>doesn’t get in{' '}</span>
+      <ScrollContainer h1Ref={spanRef1} h2Ref={spanRef2} />
+      {' '}
+      <span ref={spanRef2}>the way.</span>
+    </h1>
+  </div>
+);
 }
 
 export default HeroHeader;

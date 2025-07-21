@@ -1,0 +1,48 @@
+.scrollingTextContainer {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  border: 2px solid #CCDDC7;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  white-space: nowrap;
+  width: 42rem;
+  height: 5rem;
+}
+
+.scrollingText {
+  font-family: 'Soehne';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D87906;
+}
+
+@media (max-width: 1024px) {
+  .scrollingTextContainer {
+    width: 19rem;
+    height: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollingTextContainer {
+    width: 20rem;
+    height: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrollingTextContainer {
+    height: 4rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .scrollingTextContainer {
+    width: 16rem;
+  }
+}

@@ -1,0 +1,118 @@
+.mainPageContainer {
+  height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-height: 900px;
+}
+
+.heroSection {
+  flex: 1;
+  display: flex;
+}
+
+.twoContentContainer {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #CCDDC7;
+  overflow: hidden;
+}
+
+.ctaHeadingText {
+  font-family: 'Soehne';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.03em;
+  color: #153E2A;
+}
+
+.box {
+  border-bottom: none;
+  border-right: 1px solid #CCDDC7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  min-height: 206px;
+  padding: 2rem;
+  }
+
+.boxSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .mainPageContainer {
+    max-height: 1366px;
+  }
+  .box {
+    width: 40%;
+  }
+
+  .boxSlide {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .box {
+    border-right: 1px solid #CCDDC7;
+    min-height: 328px;
+  }
+}
+
+@media (max-width:900px) {
+  .mainPageContainer {
+    max-height: 1200px;
+  }
+  .twoContentContainer {
+    flex-direction: column-reverse;
+  }
+  .box {
+    border-right: none;
+    width: initial;
+  }
+  .boxSlide {
+    width: initial;
+    border-bottom: solid 1px #CCDDC7;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainPageContainer {
+    padding: 1.5rem;
+  }
+
+  .box {
+    padding: 20px;
+    min-height: 300px;
+  }
+
+  .ctaHeadingText {
+    font-family: 'Soehne';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 140%;
+    letter-spacing: -0.03em;
+    color: #153E2A;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainPageContainer {
+    max-height: 820px;
+  }
+  .box {
+    padding: 20px;
+    min-height: 205px;
+  }
+  .ctaHeadingText {
+    font-size: 3.8vw;
+  }
+}

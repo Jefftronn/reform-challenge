@@ -10,6 +10,18 @@ const cardsData = [
   '/cards/State=2.png',
   '/cards/State=3.png',
   '/cards/State=4.png',
+  '/cards/State=1.png',
+  '/cards/State=2.png',
+  '/cards/State=3.png',
+  '/cards/State=4.png',
+  '/cards/State=1.png',
+  '/cards/State=2.png',
+  '/cards/State=3.png',
+  '/cards/State=4.png',
+  '/cards/State=1.png',
+  '/cards/State=2.png',
+  '/cards/State=3.png',
+  '/cards/State=4.png',
 ];
 
 const SlideScrollCards = () => {
@@ -22,7 +34,7 @@ const SlideScrollCards = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 640) {
+      if (width < 500) {
         setLayoutMode('horizontal');
       } else if (width < 1025) {
         setLayoutMode('vertical');
@@ -47,9 +59,8 @@ useEffect(() => {
 
     const isActive = relIndex === 0;
     const isAdjacent = Math.abs(relIndex) === 1;
-    const offset = relIndex * 95;
+    const offset = relIndex * 100;
 
-    // Animate position, scale, and opacity
     tl.to(card, {
       xPercent: layoutMode === 'horizontal' ? offset : 0,
       yPercent: layoutMode === 'vertical' ? offset : 0,
@@ -61,7 +72,6 @@ useEffect(() => {
       pointerEvents: isActive ? 'auto' : 'none',
     }, 0);
 
-    // Then set z-index separately to fix stacking context issues
     gsap.set(card, {
       zIndex: isActive ? 3 : isAdjacent ? 2 : 1,
     });
@@ -100,13 +110,13 @@ useEffect(() => {
     });
   };
 
-  const showNext = () => {
-    animateAndSwitch((currentIndex + 1) % totalCards);
-  };
+  useEffect(() => {
+  const interval = setInterval(() => {
+    animateAndSwitch((currentIndex - 1) % totalCards);
+  }, 4000);
 
-  const showPrev = () => {
-    animateAndSwitch((currentIndex - 1 + totalCards) % totalCards);
-  };
+  return () => clearInterval(interval);
+});
 
   return (
     <div className={styles.galleryWrapper}>
@@ -127,27 +137,6 @@ useEffect(() => {
             />
           </div>
         ))}
-      </div>
-
-      <div className={styles.controls}>
-        <a onClick={showPrev} rel="noopener noreferrer">
-          <Image
-            className="dark:invert"
-            src="/Arrow=Left.svg"
-            alt="Arrow icon"
-            width={40}
-            height={40}
-          />
-        </a>
-        <a onClick={showNext} rel="noopener noreferrer">
-          <Image
-            className="dark:invert"
-            src="/Arrow=Right.svg"
-            alt="Arrow icon"
-            width={40}
-            height={40}
-          />
-        </a>
       </div>
     </div>
   );

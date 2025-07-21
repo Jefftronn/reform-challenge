@@ -7,40 +7,17 @@
   max-width: 900px;
   position: relative;
   flex-direction: column;
+  min-height: 200px;
 }
 
 .gallery {
   position: relative;
   width: 500px;
-  height: 200px;
+  height: 244px;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px;
-}
-
-@media (max-width: 1224px) {
-  .gallery {
-      width: 400px;
-  }
-}
-
-@media (max-width: 1020px) {
-  .gallery {
-      width: 500px;
-  }
-}
-
-@media (max-width: 768px) {
-  .gallery {
-      width: 500px;
-  }
-}
-
-@media (max-width: 500px) {
-  .gallery {
-      width: 300px;
-  }
+  perspective: 2000px;
 }
 
 .card {
@@ -65,24 +42,50 @@
   background-color: #FBFAF6;
 }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding-top: 20px;
-  z-index: 1000;
+@media (max-width: 1224px) {
+  .gallery {
+      width: 400px;
+  }
 }
 
-.arrowButton {
-  background: none;
-  border: none;
-  font-size: 40px;
-  cursor: pointer;
-  color: #444;
-  padding: 10px 20px;
-  transition: color 0.2s ease;
+@media (min-width: 1025) {
+  .galleryWrapper {
+    height: 328px;
+  }
 }
 
-.arrowButton:hover {
-  color: #000;
+@media (max-width: 1024px) {
+  .galleryWrapper {
+    height: 600px;
+  }
+  .gallery {
+    width: 100%;
+    height: 244px;
+  }
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .galleryWrapper {
+    height: 328px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+      width: 500px;
+      height: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+   .galleryWrapper {
+    height: 200px;
+  }
+
+  .gallery {
+      width: 70%;
+  }
 }

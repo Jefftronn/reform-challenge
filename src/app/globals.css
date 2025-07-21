@@ -12,65 +12,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #FBFAF6;
-    --foreground: #0000000;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Soehne', sans-serif;
-  overflow-x: hidden;
-}
-
-.main-header {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-@media (max-width: 1024px) and (min-width: 768px) {
-  .main-header {
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
-}
-
-.main-heading-1 {
-  font-family: 'Soehne';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 112px;
-  line-height: 120%;
-  letter-spacing: -0.03em;
-  color: #153E2A;
-}
-
-@media (max-width: 768px) {
-  .main-heading-1 {
-    font-size: 48px;
-    line-height: 115%;
-  }
-}
-
-.cta-heading-text {
-  font-family: 'Soehne';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 140%;
-  letter-spacing: -0.03em;
-  color: #153E2A;
-}
-
-@media (max-width: 500px) {
-  .cta-heading-text {
-    font-size: 14px;
-  }
-}
-
 @font-face {
   font-family: 'Soehne';
   src: url('/fonts/soehne-buch.woff2') format('woff2');
@@ -78,32 +19,18 @@ body {
   font-style: normal;
 }
 
-.scrolling-text {
-font-family: 'Soehne';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-text-align: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: #D87906;
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Soehne', sans-serif;
+  overflow-x: hidden;
 }
 
-.scrolling-text-container {
-  width: 700px;
-}
-
-@media (max-width: 1024px) {
-  .scrolling-text-container {
-    width: 300px;
-  }
-}
-
-.cta-button {
-background: #FBFAF6;
-border: 0.75px solid #30715D;
-border-radius: 25px;
-color: #30715D;
+.main-container {
+  margin: 0 auto;
+  max-width: 1440px;
 }
 
 .z-top {
