@@ -12,8 +12,12 @@ const spanRef2 = useRef<HTMLSpanElement>(null);
 return (
   <div className={styles.mainHeader}>
     <h1 className={styles.mainHeadingH1}>
-      Health insurance that{' '}
-      <span ref={spanRef1}>doesn’t get in{' '}</span>
+      Health insurance 
+      <br className={styles.headerBreak}/>
+      {' '}that{' '}
+      <span ref={spanRef1}>doesn’t{' '}
+        <br className={styles.headerBreak}/>
+         get in{' '}</span>
       <ScrollContainer h1Ref={spanRef1} h2Ref={spanRef2} />
       {' '}
       <span ref={spanRef2}>the way.</span>

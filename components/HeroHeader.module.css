@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .mainHeadingH1 {
@@ -15,9 +15,20 @@
   font-size: 7rem;
 }
 
+.headerBreak {
+  display: none;
+}
+
 @media (max-width: 1024px) {
+  .mainHeader {
+    padding-top: 108px;
+    padding-bottom: 140px;
+  }
   .mainHeadingH1 {
     font-size: 7rem;
+  }
+  .headerBreak {
+    display: block;
   }
 }
 
@@ -28,8 +39,15 @@
 }
 
 @media (max-width: 768px) {
+  .mainHeader {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
   .mainHeadingH1 {
     font-size: 4rem;
+  }
+  .headerBreak {
+    display: none;
   }
 }
 
